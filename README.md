@@ -22,4 +22,17 @@ from pipeline import DataPipeline
 
 # Initialize pipeline
 pipeline = DataPipeline()
+
+# Sample dataset with missing values
+raw_data = [1.0, None, 3.0, 10.0, float('nan')]
+
+# Impute missing values
+clean_data = pipeline.impute_missing(raw_data, strategy="mean")
+
+# Scale features to [0, 1] range
+scaled_data = pipeline.min_max_scale(clean_data)
+
+# Standardize features (mean=0, variance=1)
+standardized_data = pipeline.standardize(clean_data)
 ```
+
