@@ -45,6 +45,20 @@ class DataPipeline:
             return [0.0] * len(data)
         return [(x - min_val) / diff for x in data]
 
+    def standardize(self, data: List[float]) -> List[float]:
+        """
+        Standardizes features by removing the mean and scaling to unit variance.
+        """
+        if not data:
+            return []
+        n = len(data)
+        mean = sum(data) / n
+        variance = sum((x - mean) ** 2 for x in data) / n
+        std_dev = math.sqrt(variance)
+        if std_dev == 0:
+            return [0.0] * n
+        return [(x - mean) / std_dev for x in data]
+
 
 if __name__ == "__main__":
     # Quick sanity check
@@ -52,6 +66,8 @@ if __name__ == "__main__":
     raw_data = [1.0, None, 3.0, 10.0, float('nan')]
     clean_data = pipeline.impute_missing(raw_data, strategy="mean")
     scaled_data = pipeline.min_max_scale(clean_data)
-    print(f"Original: {raw_data}")
-    print(f"Imputed:  {clean_data}")
-    print(f"Scaled:   {scaled_data}")
+    standardized_data = pipeline.standardize(clean_data)
+    print(f"Original:     {raw_data}")
+    print(f"Imputed:      {clean_data}")
+    print(f"Scaled:       {scaled_data}")
+    print(f"Standardized: {standardized_data}")
