@@ -36,3 +36,12 @@ scaled_data = pipeline.min_max_scale(clean_data)
 standardized_data = pipeline.standardize(clean_data)
 ```
 
+## Running Tests
+
+To verify the pipeline logic, execute the script directly using Python:
+
+```bash
+python pipeline.py
+```
+
+
