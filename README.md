@@ -44,7 +44,6 @@ To verify the pipeline logic, execute the script directly using Python:
 python pipeline.py
 ```
 
-<!-- collab contribution -->
 
 
 
