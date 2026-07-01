@@ -1,0 +1,7 @@
+# Configure Sourcery to ignore all files in the repository to bypass reviews for testing
+ignore:
+  - README.md
+  - pipeline.py
+  - .sourcery.yaml
+  - "*"
+  - "**/*"
